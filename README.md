@@ -1,5 +1,5 @@
 # About this app
-Simple application with Android Jetpack, using Kotlin and include Navigation Architecture Component
+Simple application with Android Jetpack, using Kotlin and include Navigation Architecture Component.
 
 # Android Jetpack
 Android Jetpack is a set of components, tools and guidance that gets its basic DNA from the included Support Library & Architecture Components.  You can check [official documentation](https://developer.android.com/jetpack/) for more details.
@@ -13,6 +13,7 @@ The Navigation Architecture Component helps you easily implement common, but com
 - Navigation UI patterns like navigation drawers and bottom nav with little additional work
 - Type safety when passing information while navigating
 - Android Studio offers tooling for visualizing and editing the navigation flow of an app
+
 You can check [official documentation](https://developer.android.com/topic/libraries/architecture/navigation/) for more details. Or you can try the
 [codelabs](https://developer.android.com/topic/libraries/architecture/navigation/).
 
