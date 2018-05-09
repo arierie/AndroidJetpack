@@ -8,12 +8,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.Navigation
 import id.arieridwan.androidjetpack.R
 import kotlinx.android.synthetic.main.just_text_fragment.*
 
 class JustTextFragment : Fragment() {
 
-    private val TAG : String = "JustTextFragment"
+    private val TAG = "JustTextFragment"
     private lateinit var mViewModel: JustTextViewModel
 
     companion object {
@@ -29,10 +31,13 @@ class JustTextFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         mViewModel = ViewModelProviders.of(this).get(JustTextViewModel::class.java)
         mViewModel.justText.observe(this, Observer { text -> text?.let { printJustText(it) } })
+        view?.findViewById<Button>(R.id.btn_next_text)?.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_textPage_to_timerPage, null)
+        )
     }
 
     private fun printJustText(text : String) {
-        tv_text.text = text
+        tv_title.append("\n" + text)
         Log.d(TAG, text)
     }
 

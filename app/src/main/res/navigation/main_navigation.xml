@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainPage">
+
+    <fragment
+        android:id="@+id/mainPage"
+        android:name="id.arieridwan.androidjetpack.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainPage_to_textPage"
+            app:destination="@id/textPage" />
+        <action
+            android:id="@+id/action_mainPage_to_timerPage"
+            app:destination="@id/timerPage" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/textPage"
+        android:name="id.arieridwan.androidjetpack.ui.justtext.JustTextFragment"
+        android:label="JustTextFragment"
+        tools:layout="@layout/just_text_fragment">
+        <action
+            android:id="@+id/action_textPage_to_timerPage"
+            app:destination="@id/timerPage" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/timerPage"
+        android:name="id.arieridwan.androidjetpack.ui.timer.TimerFragment"
+        android:label="TimerFragment"
+        tools:layout="@layout/timer_fragment">
+        <action
+            android:id="@+id/action_timerPage_to_mainPage"
+            app:popUpTo="@id/mainPage" />
+    </fragment>
+
+</navigation>

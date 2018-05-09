@@ -6,11 +6,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 
 import id.arieridwan.androidjetpack.R
-import id.arieridwan.androidjetpack.utils.Constants.Companion.TEXT_PAGE
-import id.arieridwan.androidjetpack.utils.Constants.Companion.TIMER_PAGE
-import id.arieridwan.androidjetpack.utils.PageHelper.Companion.navigatePage
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
@@ -31,8 +31,19 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        btn_page_text.setOnClickListener({ context?.let { navigatePage(it, TEXT_PAGE) } })
-        btn_page_timer.setOnClickListener({ context?.let { navigatePage(it, TIMER_PAGE) } })
+
+        btn_page_text.setOnClickListener( Navigation.createNavigateOnClickListener(R.id.action_mainPage_to_textPage, null) )
+
+        val options = NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in_right)
+                .setExitAnim(R.anim.slide_out_left)
+                .setPopEnterAnim(R.anim.slide_in_left)
+                .setPopExitAnim(R.anim.slide_out_right)
+                .build()
+
+        btn_page_timer.setOnClickListener({ context?.let {
+            NavHostFragment.findNavController(this).navigate(R.id.action_mainPage_to_timerPage, null, options)
+        } })
     }
 
 }

@@ -8,13 +8,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.Navigation
 
 import id.arieridwan.androidjetpack.R
 import kotlinx.android.synthetic.main.timer_fragment.*
 
 class TimerFragment : Fragment() {
 
-    private val TAG : String = "MainFragment"
+    private val TAG = "MainFragment"
     private lateinit var mViewModel: TimerViewModel
 
     companion object {
@@ -30,6 +32,9 @@ class TimerFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         mViewModel = ViewModelProviders.of(this).get(TimerViewModel::class.java)
         subscribePrintTime()
+        view?.findViewById<Button>(R.id.btn_next_timer)?.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_timerPage_to_mainPage, null)
+        )
     }
 
     private fun subscribePrintTime() {

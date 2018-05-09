@@ -15,11 +15,9 @@ class TimerViewModel : ViewModel() {
     init {
         mInitialTime = SystemClock.elapsedRealtime()
         val timer = Timer()
-        // Update the elapsed time every second.
         timer.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
                 val newValue = (SystemClock.elapsedRealtime() - mInitialTime) / 1000
-                // setValue() cannot be called from a background thread so post to main thread.
                 mElapsedTime.postValue(newValue)
             }
         }, Constants.ONE_SECOND.toLong(), Constants.ONE_SECOND.toLong())
